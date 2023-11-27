@@ -1,0 +1,358 @@
+/* *,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    line-height: 1.15;
+}
+
+body {
+    font-family: 'roboto', sans-serif;
+    color: #454545;
+    font-weight: 400;
+    background: #ffffff;
+}
+
+ a {
+    color: #333333;
+    font-weight: 400;
+    outline: none;
+    text-decoration: none;
+    transition: 0.5s;
+} 
+
+/* .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+} */
+/* 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+
+}
+
+.column {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 100%;
+    max-width: 100%;
+} */
+
+/* 
+.section-title {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 45px 0 30px 0;
+} */
+
+/* .section-title::after {
+    position: absolute;
+    content: "";
+    width: 100px;
+    height: 1px;
+    left: 0;
+    /* background: #eeeeee; 
+}*/
+
+/* 
+.effect {
+    position: relative;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.effect .effect-img {
+    font-size: 0;
+    overflow: hidden;
+}
+
+.effect .effect-img img {
+    width: 100%;
+    height: auto;
+    transition: all .3s;
+}
+
+.effect:hover .effect-img img {
+    transform: scale(1.2);
+}
+
+.effect .effect-text {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(0, 0, 0, .5);
+    overflow: hidden;
+    transition: all 0.3s ease-in;
+    opacity: 0;
+}
+
+.effect .effect-text .inner {
+    position: absolute;
+    padding: 15px;
+    z-index: 1;
+}
+
+.effect .effect-text:before,
+.effect .effect-text:after {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 0;
+    content: '';
+}
+
+.effect .effect-text:before {
+    border-top: 3px solid #ffffff;
+    border-right: 3px solid #ffffff;
+    left: -100%;
+    top: 0;
+}
+
+.effect .effect-text:after {
+    border-bottom: 3px solid #ffffff;
+    border-left: 3px solid #ffffff;
+    left: 100%;
+    bottom: 0;
+}
+
+.effect:hover .effect-text {
+    opacity: 1;
+}
+
+.effect:hover .effect-text:after,
+.effect:hover .effect-text:before {
+    animation-delay: .1s;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+
+}
+
+.effect:hover .effect-text:after {
+    animation-name: left-up;
+}
+
+.effect:hover .effect-text:before {
+    animation-name: right-dn;
+}
+
+.effect .effect-text h2 {
+    height: 45px;
+    color: #ffffff;
+    font-size: 25px;
+    margin: 0;
+}
+
+.effect .effect-text p {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.effect .effect-btn .btn {
+    display: inline-block;
+    height: 35px;
+    padding: 7px 15px;
+    color: #333333;
+    background: #ffffff;
+
+}
+
+@media(min-width:576px) {
+    .container {
+        max-width: 540px;
+    }
+
+    .column {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+
+@media(min-width:768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .column {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media(min-width:992px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .column {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+@media(min-width:1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+
+@keyframes left-up {
+    0% {
+        left: 100%;
+        height: 0;
+    }
+
+    50% {
+        left: 0%;
+        height: 0;
+    }
+
+    100% {
+        height: 100%;
+        left: 0;
+    }
+}
+
+@keyframes right-dn {
+    0% {
+        left: -100%;
+        height: 0;
+    }
+
+    50% {
+        left: 0%;
+        height: 0;
+    }
+
+    100% {
+        height: 100%;
+        left: 0;
+    }
+} */
+
+
+/* ******************************************************************************************
+CSS above broken link, photos are out of dimension and styles dont work properly. try to figure out for a while but no success.
+therefore i could not use the nice card i ve prepared. I have tested it on Html file and works perfectly.
+********************************************************************************************************* */
+/* https://th.bing.com/th/id/R.34ea4777cb51d45a0873a84187c67eed?rik=NmKA5pqJNo2GKg&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f3%2f6%2f8%2f596537.jpg&ehk=A9ZEDOmRK%2bNT8eEpCRFhVbd06NsS0yCQ%2biP0eHYCRDk%3d&risl=&pid=ImgRaw&r=0 */
+body {
+    background-image: url("https://th.bing.com/th/id/OIG.OFZ.hsz8CGDWjVBjL6Np?pid=ImgGn");
+    font-family: 'roboto', sans-serif;
+    color: whitesmoke;
+    font-weight: 400;
+}
+
+
+.section-title {
+    width: 100%;
+    text-align: center;
+    padding-top: 150px;
+    color: white;
+}
+
+.header {
+    background-color: rgba(0, 0, 0, 0.13);
+}
+
+
+.container {
+    background-color: rgba(0, 0, 0, 0.521);
+}
+
+.container1 {
+    padding-top: 150px;
+    color: rgb(104, 101, 101);
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 100%;
+    border-radius: 5px;
+    height: 500px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    margin: 10px;
+
+}
+
+.card-body {
+    text-align: center;
+}
+
+.list-group-item {
+    text-align: center;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 2px 16px;
+}
+
+
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bffd0;
+}
+
+.btn-outline-warning {
+    color: #ffe600;
+    border-color: #ffe600;
+}
+
+.btn-outline-danger {
+    color: #ff0000;
+    border-color: #ff0000;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #006eff;
+    border-color: #fff;
+}
+
+.btn-outline-warning:hover {
+    color: #fff;
+    background-color: #fffb00;
+    border-color: #fff;
+}
+
+.btn-outline-danger:hover {
+    color: #fff;
+    background-color: #ff0015;
+    border-color: #fff;
+}
