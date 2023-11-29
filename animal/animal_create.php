@@ -2,17 +2,16 @@
 session_start();
 
 if ((!isset($_SESSION["user"]) && !isset($_SESSION["adm"])) || isset($_SESSION["user"])) {
-    // header("location: ../home.php");
+    header("location: ../home.php");
 }
 
 require_once "../components/db_connect.php";
 require_once "../components/file_upload.php";
 
-$options = "";
+
 $sql = "SELECT * FROM `pet_adoption`";
 $result = mysqli_query($connect, $sql);
 while ($row = mysqli_fetch_assoc($result)) {
-    $options .= "<option value='$row[pet_id]'> $row[adoption_name]</option>";
 }
 
 if (isset($_POST["create"])) {
@@ -25,14 +24,16 @@ if (isset($_POST["create"])) {
     $age = $_POST["age"];
     $vaccinated = $_POST["vaccinated"];
     $breed = $_POST["breed"];
-    $status = $_POST["adopted"] != 0 ? $_POST["available"] : NULL;
-    if ($status === 'adopted' || $status === 'available') {
-    } else {
+    // $status = $_POST["adopted"] != 0 ? $_POST["available"] : NULL;
+    // if ($status === 'adopted' || $status === 'available') {
+    // } else {
 
-        echo "Invalid status, Please choose 'adopted' or 'available'.";
-    }
+    //     echo "Invalid status, Please choose 'adopted' or 'available'.";
+    // } 
+    ////EXPLANATION OF VARIABLE CHANGE: $STATUS///
+    ////// i have replaced this variable: (`status`) for (`statuss`). To do so I ve created a new column type enum. so status are asign by default as available since people dont bring to the shop adopted animals. once adopted  the ($statuss) will change then to adopted.
 
-    $sql = "INSERT INTO `animals` (`animal_name`, `price`, `photo`, `location`, `description`, `size`, `age`, `vaccinated`, `breed`, `status`) VALUES ('$animal_name',$price,'{$photo[0]}','$location','$description','$size','$age','$vaccinated','$breed','$status')";
+    $sql = "INSERT INTO `animals` (`animal_name`, `price`, `photo`, `location`, `description`, `size`, `age`, `vaccinated`, `breed`, `statuss`) VALUES ('$animal_name',$price,'{$photo[0]}','$location','$description','$size','$age','$vaccinated','$breed','$statuss')";
 
     if (mysqli_query($connect, $sql)) {
         echo "<div class='alert alert-success' role='alert'>
@@ -69,8 +70,8 @@ if (isset($_POST["create"])) {
 
 <body>
     <?php require_once '../components/navbar.php' ?>
-    <div class="container mt-5">
-        <h2>New Pet Entry</h2>
+    <div class="container1 mt-5">
+        <h2>Create new pet entry</h2>
         <form method="POST" enctype="multipart/form-data">
             <div class="mb-3 mt-3">
                 <label for="title" class="form-label">Name</label>
@@ -110,11 +111,9 @@ if (isset($_POST["create"])) {
             </div>
             <div class="mb-3">
                 <select name="status" class="form-control">
-                    <option value="0"> Status</option>
-                    <?= $options ?>
                 </select>
             </div>
-            <button name="create" type="submit" class="btn btn-primary">Add a new pet</button>
+            <button name="create" type="submit" class="btn btn-primary">Create a new pet entry</button>
             <a href="../home.php" class="btn btn-warning">Back to home page</a>
         </form>
     </div>

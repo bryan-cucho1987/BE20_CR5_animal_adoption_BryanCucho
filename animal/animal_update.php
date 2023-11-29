@@ -8,24 +8,11 @@ if ((!isset($_SESSION["user"]) && !isset($_SESSION["adm"])) || isset($_SESSION["
 require_once '../components/db_connect.php';
 require_once '../components/file_upload.php';
 
-$options = "";
-
 if (isset($_GET["id"]) && !empty($_GET["id"])) {
     $id = $_GET["id"];
     $sql = "SELECT * FROM `animals` WHERE `animal_id` = $id";
     $result = mysqli_query($connect, $sql);
-
     $row = mysqli_fetch_assoc($result);
-
-    // $sql = "SELECT * FROM `suppliers`";
-    // $result = mysqli_query($conn, $sql);
-    // while ($row_sup = mysqli_fetch_assoc($result)) {
-    //     if ($row["fk_supplier"] == $row_sup["sup_id"]) {
-    //         $options .= "<option selected value='$row_sup[sup_id]'>$row_sup[sup_name]</option>";
-    //     } else {
-    //         $options .= "<option value='$row_sup[sup_id]'>$row_sup[sup_name]</option>";
-    //     }
-    // }
 }
 
 if (isset($_POST["create"])) {
@@ -39,11 +26,11 @@ if (isset($_POST["create"])) {
     $vaccinated = $_POST["vaccinated"];
     $breed = $_POST["breed"];
     $status = $_POST["status"];
-    // $adoption = $_POST["adopted"] != 0 ? $_POST["available"] : "NULL";
+
 
     if ($_FILES["photo"]["error"] == 0) {
         if ($row["photo"] !== "default.jpg") {
-            // unlink("../assets/$row[photo]");
+            unlink("../assets/$row[photo]");
         }
         $sql = "UPDATE `animals` SET `animal_name`='$animal_name',`price`= $price,`photo` = '$photo[0]',`location` ='$location', `description` = '$description',`size` = '$size',`age`='$age',`vaccinated` = '$vaccinated',`breed` = '$breed',`status`='$status' WHERE `animal_id` = {$id}";
     } else {
@@ -89,7 +76,8 @@ mysqli_close($connect);
 
 <body>
     <?php require_once '../components/navbar.php' ?>
-    <div class="container mt-5">
+
+    <div class="container1 mt-5">
         <h2>UPDATE PET PROFILE</h2>
         <form method="POST" enctype="multipart/form-data">
             <div class="mb-3 mt-3">

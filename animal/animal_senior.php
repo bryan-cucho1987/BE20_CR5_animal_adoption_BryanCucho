@@ -52,7 +52,8 @@ mysqli_close($connect);
 
 <body>
   <?php require_once '../components/navbar.php'; ?>
-  <div class="container">
+
+  <div class="container test">
     <div class="section-title">
       <h1 class="greeting">Meet our older friends!</h1>
     </div>

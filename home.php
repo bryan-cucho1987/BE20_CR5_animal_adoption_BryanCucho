@@ -1,34 +1,37 @@
 <?php
 session_start();
+
 require_once './components/db_connect.php';
-if (isset($_SESSION["user"]) && isset($_POST["buy"])) {
+$msg = "";
+if (isset($_SESSION["USER"]) && isset($_POST["buy"])) {
   $date = date('Y-m-d');
-  $sql = "INSERT INTO `pet_adoption`(`pet_adoption_date`, `fk_user_id`, `fk_animal_id`) VALUES ('$date',($_SESSION[user]),'$_POST[animal]')";
+  $userId = $_SESSION["USER"];
+  $animalId = $_POST["animal"];
+
+  $sql = "INSERT INTO `pet_adoption`(`pet_adoption_date`, `fk_user_id`, `fk_animal_id`) VALUES ('$date',$userId,$animalId)";
   if (mysqli_query($connect, $sql)) {
-    echo "
+    $msg = "
     <div class='alert alert-success' role='alert'>
     A Pet has been bought succesfully!
     </div>";
   } else {
-    echo "
+    $msg = "
     <div class='alert alert-danger' role='alert'>
     Sorry! Your purchase has not gone through!
     </div>";
   }
 }
 
-
 $sql = " SELECT *
 FROM `animals`
-LEFT JOIN `pet_adoption` ON `animals`.`fk_animal_id` = `pet_adoption`.pet_id";
+LEFT JOIN `pet_adoption` ON `animals`.`fk_animal_id` = `pet_adoption`.`pet_id`";
 $result = mysqli_query($connect, $sql);
 $cards = "";
-
 
 if (mysqli_num_rows($result) > 0) {
   while ($row = mysqli_fetch_assoc($result)) {
     $cards .= "<div class.='card'>
-        <img src='assets/{$row['photo']}' class='card-img-top'>
+        <img src='assets/{$row['photo']}' class='card-img-top rounded'>
         <div class='card-body'>
           <h2 class='card-title'><strong> {$row['animal_name']}</strong></h2>
         </div>
@@ -40,12 +43,12 @@ if (mysqli_num_rows($result) > 0) {
           <a href='./animal/animal_details.php?id={$row['animal_id']}' class='btn btn-outline-primary'>Read more</a>";
     if (isset($_SESSION["user"])) {
       $cards .= "
-      <form action = '' method='post'>
-          <input type ='hidden' name='animal' value'$row[animal_id]'>
-          <input class='btn btn-outline-warning' type='submit' value='Take me home!' name= 'buy'>
+      <form action = '' method='POST'>
+          <input type ='hidden' name='animal' value='$row[animal_id]'>
+          <input class='btn btn-outline-warning' type='submit' value='Take me home!' name='buy'>
       </form>";
     }
-    $cards .= "</div>
+    $cards .= "</div> 
         <br/>
       </div>";
   }
@@ -76,12 +79,10 @@ mysqli_close($connect);
 
 <body>
   <?php require_once './components/navbar.php'; ?>
-  <div class="container">
+  <div class="container test">
+    <?php echo $msg ?>
     <div class="section-title">
-      <h1 class="greeting">Meet our dear friends!<br>
-        &
-      </h1>
-      <h2 class="greeting">Sign up to purchase a pet</h>
+      <h1 class="greeting">Meet our dear friends!</h1>
     </div>
     <div class='row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row row-cols-xs-1'>
       <?= $cards ?>

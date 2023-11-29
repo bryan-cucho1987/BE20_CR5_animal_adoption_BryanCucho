@@ -2,12 +2,12 @@
 
 session_start();
 
-if (isset($_SESSION["user"])) { // if a session "user" is exist and have a value
-    header("Location: home.php"); // redirect the user to the home page
+if (isset($_SESSION["USER"])) { // if a session "user" exists and have a value
+    header("Location: ../home.php"); // redirect the user to the home page
 }
 
-if (isset($_SESSION["adm"])) { // if a session "adm" is exist and have a value
-    header("Location: dashboard.php"); // redirect the admin to the dashboard page
+if (isset($_SESSION["ADM"])) { // if a session "adm" exists and have a value
+    header("Location: ../user/dashboard.php"); // redirect the admin to the dashboard page
 }
 
 require_once '../components/db_connect.php';
@@ -89,14 +89,17 @@ if (isset($_POST["register"])) {
         // hashing the password before inserting it to the database
         $password = hash("sha256", $password);
 
-        $sql = "INSERT INTO users (`fname`, `lname`, `email`, `password`, `phone_number`,`date_of_birth`, `address`, `picture`, `status`) VALUES ('$fname','$lname', '$email','$password','$phone_number', '$date_of_birth', '$address', '$image[0]','$status')";
+        $sql = "INSERT INTO users (`fname`, `lname`, `email`, `password`, `phone_number`,`date_of_birth`, `address`, `picture`) VALUES ('$fname','$lname', '$email','$password','$phone_number', '$date_of_birth', '$address', '$image[0]')";
 
         $result = mysqli_query($connect, $sql);
 
         if ($result) {
+            header("Location: ../user/login.php");
             echo "<div class='alert alert-success'>
             <p>New account has been created, $image[1]</p>
         </div>";
+
+            ///// :(
         } else {
             echo "<div class='alert alert-danger'>
             <p>Something went wrong, please try again later ...</p>
@@ -152,7 +155,7 @@ if (isset($_POST["register"])) {
                     <input type="tel" class="form-control" id="phone_number" name="phone number">
                 </div>
                 <div class="mb-3">
-                    <label for="address" class="form-label">Adress</label>
+                    <label for="address" class="form-label">Address</label>
                     <input type="text" class="form-control" id="address" name="address">
                 </div>
 

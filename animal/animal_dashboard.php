@@ -17,8 +17,10 @@ if (mysqli_num_rows($result) > 0) {
                     <td>{$row["vaccinated"]}</td>
                     <td>{$row["location"]}</td>
                     <td>{$row["size"]}</td>
-                    <td>{$row["status"]}</td>
+                    <td>{$row["statuss"]}</td>
                     <td><img src='../assets/{$row["photo"]}' alt='In progress..' width='25'></td>
+                    <td><a href='../animal/animal_update.php?id={$row['animal_id']}' class='btn btn-primary'>Update</a></td>
+                    <td><a href='../animal/animal_delete.php?id={$row['animal_id']}' class='btn btn-warning'>Delete</a></td>
             </tr>";
     }
 } else {
@@ -67,6 +69,8 @@ if (mysqli_num_rows($result) > 0) {
                     <th scope="col">Size</i>
                     <th scope="col">Status</th>
                     <th scope="col">Photo</th>
+                    <th scope="col"></th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>

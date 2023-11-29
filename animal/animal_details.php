@@ -8,30 +8,27 @@ if (isset($_GET["id"]) && !empty($_GET["id"])) {
 
     $cards = "";
 
-
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             $cards .= "<div class.='card'>
         <img src='../assets/{$row['photo']}' class='card-img-top'>
-        <div class='card-body'>
-          <h3 class='card-title'>Name:{$row['animal_name']}</h3>
-        </div>
         <ul class='list-group list-group-flush'>
-            <li class='list-group-item'>Name:{$row['animal_name']}</li>
-          <li class='list-group-item'>Breed / Race: {$row['breed']}</li>
+            <li class='list-group-item'>Name: {$row['animal_name']}</li>
+          <li class='list-group-item'>Breed: {$row['breed']}</li>
           <li class='list-group-item'>Age: {$row['age']}</li>
           <li class='list-group-item'>Vaccinated: {$row['vaccinated']}</li>
           <li class='list-group-item'>Address: {$row['location']}</li>
           <li class='list-group-item'>Size: {$row['size']}</li>
-          <li class='list-group-item'>Status: {$row['status']}</li>
+          <li class='list-group-item'>Status: {$row['statuss']}</li>
           <li class='list-group-item'>Description: {$row['description']}</li>
         </ul>
         <div class='card-body'>
-          <a href='../animal/animal_details.php?id={$row['animal_id']}' class='btn btn-outline-primary'>Take me home!</a>";
+            <a href='../home.php' class='btn btn-primary'>Back to home page</a>
+          <a href='../animal/animal_details.php?id={$row['animal_id']}' class='btn btn-primary'>Take me home!</a>";
             if (isset($_SESSION["adm"])) {
                 $cards .= "
-          <a href='../animal/animal_update.php?id={$row['animal_id']}' class='btn btn-outline-warning'>Update</a>
-          <a href='../animal/animal_delete.php?id={$row['animal_id']}' class='btn btn-outline-danger'>Delete</a>";
+          <a href='../animal/animal_update.php?id={$row['animal_id']}' class='btn btn-primary'>Update</a>
+          <a href='../animal/animal_delete.php?id={$row['animal_id']}' class='btn btn-warning'>Delete</a>";
             }
             $cards .= "</div>
         <br/>
@@ -51,7 +48,7 @@ mysqli_close($connect);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> HOME </title>
+    <title> ANIMAL DETAILS </title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -65,9 +62,9 @@ mysqli_close($connect);
 
 <body>
     <?php require_once '../components/Navbar.php'; ?>
-    <div class="container">
+    <div class="containerDetails">
         <div class="section-title">
-            <h1>Read about me</h1>
+            <h1 class="text-center">Read about me</h1>
         </div>
         <?= $cards ?>
     </div>

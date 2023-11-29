@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION["user"]) || isset($_SESSION["adm"])) {
+if (isset($_SESSION['user']) || isset($_SESSION['adm'])) {
     header("location: ../home.php");
 }
 
@@ -11,15 +11,13 @@ $password = "";
 $email = "";
 $emailError = "";
 $passError = "";
+$error = "";
 
-// if (isset($_POST["login"])) {
-//     $email = clean($_POST["email"]);
-//     $password = clean($_POST["password"]);
-//     $error = false;
 
 if (isset($_POST["login"])) {
     $email = isset($_POST["email"]) ? clean($_POST["email"]) : "";
     $password = isset($_POST["password"]) ? clean($_POST["password"]) : "";
+
 
     if (empty($email)) {
         $error = true;
@@ -38,14 +36,14 @@ if (isset($_POST["login"])) {
 
         $sql = "SELECT * FROM `users` WHERE `email` = '$email' AND `password` = '$password'";
         $result = mysqli_query($connect, $sql);
-
+        var_dump($result);
         if (mysqli_num_rows($result) === 1) {
             $row = mysqli_fetch_assoc($result);
-            if ($row["status"] === "user") {
-                $_SESSION["user"] = $row["user_id"];
+            if ($row['status'] == 'user') {
+                $_SESSION['user'] = $row['user_id'];
                 header("Location: ../home.php");
-            } elseif ($row["status"] === "adm") {
-                $_SESSION["adm"] = $row["user_id"];
+            } elseif ($row["status"] == "adm") {
+                $_SESSION['adm'] = $row['user_id'];
                 header("Location: /BE20_CR5_BryanJCuchoM/user/user_dashboard.php");
             }
         } else {
@@ -56,7 +54,7 @@ if (isset($_POST["login"])) {
         }
     }
 }
-
+var_dump('status');
 mysqli_close($connect);
 
 ?>
@@ -98,8 +96,11 @@ mysqli_close($connect);
             </div>
             <button name="login" type="submit" class="btn btn-primary">Login</button>
 
-            <span>you don't have an account? <a href="register.php"><strong>register here</strong></a></span>
+            <span>You don't have an account? <a href="register.php"><strong>register here</strong></a></span>
         </form>
+        <br>
+        <p> user login: bryancucho@gmail.com / 123456</p>
+        <p> adm login: peterpane@gmail.com / 123456</p>
     </div>
     <br>
 </body>

@@ -20,6 +20,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>{$row["address"]}</td>
                     <td><img src='../assets/{$row["picture"]}' alt='User Avatar' width='25'></td>
                     <td><a href='../user/user_update.php?user_id=$row[user_id]' class='btn btn-primary'>Update</a></td>
+                    <td><a href='../user/user_delete.php?id={$row['user_id']}' class='btn btn-danger'>Delete</a></td>
             </tr>";
     }
 }
@@ -63,6 +64,7 @@ if (mysqli_num_rows($result) > 0) {
                     <th scope="col">Phone number</th>
                     <th scope="col">Address</th>
                     <th scope="col">Photo</i>
+                    <th scope="col"></th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>

@@ -145,8 +145,8 @@ if (isset($_POST["update"])) {
                 <input type="file" class="form-control" id="picture" name="picture">
             </div>
 
-            <button name="update" type="submit" class="btn btn-warning">Update profile</button>
-            <a href='../home.php' class='btn btn-warning'>Take me home!</a>
+            <button name="update" type="submit" class="btn btn-primary">Update profile</button>
+            <a href='../home.php' class='btn btn-primary'>Back to Home page</a>
         </form>
     </div>
 
